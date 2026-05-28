@@ -1,0 +1,24 @@
+# Configuration for Hybrid Retrieval
+
+# Question types to run (can enable/disable by commenting out)
+question_types:
+  - target_questions
+  - untarget_questions
+  - utility_questions
+
+# Datasets to run
+datasets:
+  # - chatdoctor
+  - wiki_pii
+
+# Retrieval parameters
+retrieval_settings:
+  method: "hybrid"              # hybrid, dense, sparse
+  top_k: 5                      # number of documents to retrieve per question
+  dense_model: "models/embeddings/bge-m3"  # SentenceTransformer model for dense retrieval
+  rrf_k: 60                     # RRF smoothing constant
+  batch_size: 16               # Batch size for encoding
+
+# Limits for debugging (set to 0 or null to process all)
+max_corpus_docs: 0              # Limit the number of documents to index
+max_questions: 0                # Limit the number of questions to process per file

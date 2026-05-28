@@ -1,0 +1,38 @@
+# ==============================================================================
+# PPR-Code Project Requirements
+# Python Version: 3.13.13
+# Generated based on your current environment (pip freeze) and project imports
+# ==============================================================================
+
+# --- Core Dependencies (Explicitly imported or required in active project files) ---
+openai==2.37.0
+PyYAML==6.0.3
+numpy==2.4.4
+pandas==3.0.2
+tqdm==4.67.3
+pyarrow==24.0.0
+
+
+# --- Deep Learning & Embeddings ---
+# Note: For CUDA 12.8 support on Windows, you can install torch with:
+# pip install torch==2.11.0+cu128 --extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+sentence-transformers==5.4.1
+transformers==5.8.0
+accelerate==1.13.0
+
+# --- PyTorch Geometric & Utilities (Present in environment) ---
+torch-geometric==2.7.0
+torch_scatter==2.1.2+pt211cu128
+torch_sparse==0.6.18+pt211cu128
+torchvision==0.26.0+cu128
+
+# --- Utilities & Helper Packages (Present in environment) ---
+requests==2.33.1
+pydantic==2.13.4
+scikit-learn==1.8.0
+scipy==1.17.1
+tiktoken==0.12.0
+distro==1.9.0
+huggingface_hub==1.14.0
+modelscope==1.36.3

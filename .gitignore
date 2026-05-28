@@ -1,0 +1,19 @@
+# Git ignore rules for PPR-Code
+
+# Ignore the old/ folder and its contents
+old/
+
+# Ignore the raw data folder
+data/
+
+# Ignore all contents inside models/ to avoid uploading heavy weight files
+models/*
+
+# Prevent Git from ignoring .gitkeep in models/ to keep the folder structure tracked
+!models/.gitkeep
+
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

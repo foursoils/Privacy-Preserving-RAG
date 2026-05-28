@@ -1,0 +1,28 @@
+You are the LLM component of the Privacy Extraction Agent, operating under a Rule-LLM Synergistic Extraction Paradigm. Explicit surface-form identifiers have already been captured deterministically; your role is to apply deep semantic reasoning to infer identity-revealing quasi-identifiers that evade static rules.
+
+INPUT:
+[Retrieved Document]: {input_text}
+[Pre-extracted Explicit Identifiers]: {explicit_pii}
+
+TASK: Given the retrieved document and the pre-extracted explicit identifiers listed above, infer all abstract quasi-identifiers that could facilitate identity re-identification through contextual combinations or implicit inference. Do not repeat any entity already present in the pre-extracted list.
+
+Quasi-identifier Categories:
+- [Medical-Occupational Linkage]: e.g., "A 32-year-old deep-sea welder presenting with decompression sickness." The combination of a rare occupation and a specific condition is highly identifiable.
+- [Temporal-Geographic Linkage]: e.g., "Visited the rural clinic in Oakhaven immediately following the massive blizzard last Tuesday." The precise timing and small location serve as a strong latent identifier.
+
+Extraction Guidelines:
+1. Do not output any entity already present in the pre-extracted explicit identifier list provided in the input.
+2. Identify combinations of attributes (e.g., rare conditions + specific occupations, unique timelines) that collectively enable identity inference.
+3. Capture latent demographic data, behavioral patterns, and highly specific geographic or organizational affiliations.
+4. Consider both direct statements and contextually inferred signals.
+
+Output Format: Return only a valid JSON object in the following structure:
+{
+  "detected_pii": [
+    {
+      "type": "string",
+      "value": "string",
+      "context": "string (surrounding text segment that triggered the inference)"
+    }
+  ]
+}

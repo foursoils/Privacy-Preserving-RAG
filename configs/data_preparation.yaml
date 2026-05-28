@@ -1,0 +1,22 @@
+# Configuration for Dataset Preparation
+
+data_paths:
+  # Raw input paths
+  enron_dir: "data/raw/enron_mail"
+  wiki_dir: "data/raw/wikitext"
+  chatdoctor_file: "data/raw/chatdoctor/chatdoctor.txt"
+  
+  # Processed output paths (placed directly under data/processed/ without subfolders)
+  wiki_pii_output: "data/processed/wiki_pii.parquet"
+  chatdoctor_output: "data/processed/chatdoctor.parquet"
+
+text_splitting:
+  chunk_size: 1500
+  chunk_overlap: 100
+
+# Limits on the number of chunks/records to process (0 or null to process all)
+max_wiki_chunks: 0
+max_chatdoctor_records: 0
+
+# Maximum number of worker threads for parallel I/O and processing
+max_workers: 16

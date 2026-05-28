@@ -1,0 +1,47 @@
+# Configuration for Privacy-Preserving RAG (PPR) Multi-Agent System
+
+llm_settings:
+  # Mode of LLM execution: "api" (remote API via OpenAI client) or "vllm" (local offline inference engine)
+  mode: "vllm"
+  
+  # API Mode settings (OpenAI-compatible client)
+  api:
+    api_key: ""             # Leave empty to read from environment variable OPENAI_API_KEY
+    base_url: "https://api.openai.com/v1"
+    model: "gpt-4o-mini"
+    
+  # vLLM Mode settings (Offline Inference Engine)
+  vllm:
+    model_path: "models/llms/Qwen3.5-4B"  # Path to a locally downloaded model directory (e.g. models/DeepSeek-R1-Distill-Qwen-7B)
+    gpu_memory_utilization: 0.92
+    tensor_parallel_size: 1
+    max_model_len: 40960
+    enable_chunked_prefill: true
+
+# Common parameters for text generation (used by both API and vLLM where supported)
+generation_params:
+  max_new_tokens: 10240
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  repetition_penalty: 1.3
+  enable_thinking: true
+
+# Agent-specific paths and settings
+agents:
+  privacy_extraction:
+    prompt_path: "prompts/privacy_extraction.txt"
+  
+  semantic_analysis:
+    prompt_path: "prompts/semantic_analysis.txt"
+
+  reconstruction:
+    prompt_path: "prompts/reconstruction.txt"
+
+# Default execution settings for run_pipeline.py
+execution_settings:
+  dataset: "chatdoctor"                 # chatdoctor (alias: chat) or wiki_pii (alias: wiki)
+  qtype: "target_questions"            # target_questions, untarget_questions, or utility_questions
+  step: 1                            # 1, 2, 3 or null (null runs the entire pipeline)
+  limit: null                           # Limit number of queries (integer or null for no limit)
+
